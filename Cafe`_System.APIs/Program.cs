@@ -1,9 +1,12 @@
+using Cafe__System.Infrastructure.Data;
+using Cafe_System.Infrastructure.Dependency_Injection;
+using System.Threading.Tasks;
 
 namespace Cafe__System.APIs
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +16,13 @@ namespace Cafe__System.APIs
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
+            builder.Services.AddDbContextServices(builder.Configuration);
+
+
             var app = builder.Build();
+
+
+            await app.MiagrateAndSeedDatabasesAsync();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -22,6 +31,8 @@ namespace Cafe__System.APIs
             }
 
             app.UseHttpsRedirection();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
