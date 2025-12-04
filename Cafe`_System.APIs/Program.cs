@@ -18,6 +18,7 @@ namespace Cafe__System.APIs
 
             builder.Services.AddDbContextServices(builder.Configuration);
 
+            builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
@@ -28,6 +29,8 @@ namespace Cafe__System.APIs
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
             app.UseHttpsRedirection();
