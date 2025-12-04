@@ -11,7 +11,7 @@ namespace Cafe__System.Infrastructure.Specifications
 {
     internal static class SpecificationsEvaluator<TEntity> where TEntity : BaseEntity
     {
-        public static IQueryable<TEntity> GetQuery(IQueryable<TEntity> inputQuery, ISpecifications<TEntity> specs)
+        public static IQueryable<TEntity> GetQuery(IQueryable<TEntity> inputQuery, ISpecification<TEntity> specs)
         {
             var qurey = inputQuery;
             //where

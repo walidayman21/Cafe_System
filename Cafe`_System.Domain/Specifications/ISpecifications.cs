@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Cafe__System.Domain.Specifications
 {
-    public interface ISpecifications<T> where T : BaseEntity
+    public interface ISpecification<T> where T : BaseEntity
     {
         public Expression<Func<T, bool>>? Criteria { get;}
         public List<Expression<Func<T, object>>> Includes { get; set; }

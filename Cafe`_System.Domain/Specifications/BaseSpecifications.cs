@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Cafe__System.Domain.Specifications
 {
-    public class BaseSpecifications<T> : ISpecifications<T> where T : BaseEntity
+    public class BaseSpecifications<T> : ISpecification<T> where T : BaseEntity
     {
         public Expression<Func<T, bool>>? Criteria { get; set; } = null;
 
